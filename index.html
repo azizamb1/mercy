@@ -1,0 +1,2033 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>The Mirror of Mercy</title>
+    <meta name="description" content="A simple, free guide for choosing mercy in everyday moments — for kids and adults alike.">
+
+    <!-- Open Graph & Twitter -->
+    <meta property="og:title" content="The Mirror of Mercy">
+    <meta property="og:description" content="A simple guide for choosing mercy in everyday moments.">
+    <meta property="og:type" content="website">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="The Mirror of Mercy">
+    <meta name="twitter:description" content="A simple guide for choosing mercy in everyday moments.">
+
+    <!-- Home-Screen Install (manifest + icons, no service worker) -->
+    <meta name="theme-color" content="#0d9488">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <meta name="apple-mobile-web-app-title" content="Mercy">
+    <link rel="manifest" href='data:application/manifest+json,{"name":"The Mirror of Mercy","short_name":"Mercy","description":"A simple guide for choosing mercy in everyday moments.","start_url":".","display":"standalone","background_color":"%23faf8f5","theme_color":"%230d9488","orientation":"portrait","icons":[{"src":"data:image/svg+xml;utf8,<svg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 192 192%27><rect width=%27192%27 height=%27192%27 rx=%2744%27 fill=%27%230d9488%27/><path d=%27M96 138L62 104C50 92 50 73 62 61C74 49 92 49 96 61C100 49 118 49 130 61C142 73 142 92 130 104L96 138Z%27 fill=%27white%27/></svg>","sizes":"192x192","type":"image/svg+xml","purpose":"any maskable"}]}'>
+
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 192 192'%3E%3Crect width='192' height='192' rx='44' fill='%230d9488'/%3E%3Cpath d='M96 138L62 104C50 92 50 73 62 61C74 49 92 49 96 61C100 49 118 49 130 61C142 73 142 92 130 104L96 138Z' fill='white'/%3E%3C/svg%3E">
+    <link rel="apple-touch-icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 192 192'%3E%3Crect width='192' height='192' rx='44' fill='%230d9488'/%3E%3Cpath d='M96 138L62 104C50 92 50 73 62 61C74 49 92 49 96 61C100 49 118 49 130 61C142 73 142 92 130 104L96 138Z' fill='white'/%3E%3C/svg%3E">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Merriweather:ital,wght@0,300;0,400;0,700;1,300&family=Amiri:wght@400;700&display=swap" rel="stylesheet">
+
+    <!-- Icons (pinned version, not @latest, so we don't get surprise updates) -->
+    <script src="https://unpkg.com/lucide@0.469.0/dist/umd/lucide.min.js"></script>
+
+    <style>
+        :root {
+            /* Warm paper palette — calmer than slate, more Islamic in feel */
+            --paper: #faf8f5;
+            --paper-warm: #f5f1ea;
+            --ink-100: #ebe5dc;
+            --ink-200: #d8cfc1;
+            --ink-300: #a89e8e;
+            --ink-400: #6e6558;
+            --ink-500: #4a4339;
+            --ink-600: #2c2820;
+            --ink-700: #1a1814;
+
+            /* Teal — primary brand */
+            --teal-50: #f0fdfa;
+            --teal-100: #ccfbf1;
+            --teal-200: #99f6e4;
+            --teal-400: #2dd4bf;
+            --teal-600: #0d9488;
+            --teal-700: #0f766e;
+            --teal-800: #115e59;
+            --teal-900: #0a3d36;
+
+            /* Calm action green */
+            --sage-50: #f1f6f1;
+            --sage-100: #dde8dd;
+            --sage-600: #4a7c59;
+            --sage-700: #355c41;
+            --sage-900: #1f3527;
+
+            /* Soft accent for breathing/sky */
+            --sky-50: #eff7fb;
+            --sky-100: #d8ecf5;
+            --sky-400: #5fa8c4;
+            --sky-600: #2e7da0;
+            --sky-700: #1f5874;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: 'Inter', system-ui, -apple-system, sans-serif;
+            background: var(--paper);
+            color: var(--ink-600);
+            line-height: 1.6;
+            min-height: 100vh;
+            width: 100%;
+            overflow-x: hidden;
+            font-size: 18px;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            text-rendering: optimizeLegibility;
+            touch-action: manipulation;
+        }
+        @media (min-width: 768px) {
+            body { font-size: 17px; }
+        }
+
+        button { font-family: inherit; cursor: pointer; border: none; background: none; color: inherit; -webkit-tap-highlight-color: transparent; touch-action: manipulation; }
+        a { text-decoration: none; color: inherit; }
+
+        .arabic { font-family: 'Amiri', serif; direction: rtl; line-height: 1.85; }
+        .serif { font-family: 'Merriweather', serif; }
+
+        /* ===========================================================
+           CONTAINER — mobile is edge-to-edge, desktop gets the frame
+           =========================================================== */
+        .frame {
+            width: 100%;
+            margin: 0 auto;
+            min-height: 100dvh;
+            background: var(--paper);
+            position: relative;
+            padding-bottom: env(safe-area-inset-bottom);
+        }
+
+        /* Mobile: force any ancestor we've marked to be full-width and
+           zero-padding. */
+        @media (max-width: 767px) {
+            .mercy-fullbleed {
+                padding-left: 0 !important;
+                padding-right: 0 !important;
+                margin-left: 0 !important;
+                margin-right: 0 !important;
+                max-width: 100% !important;
+                width: 100% !important;
+                background: var(--paper) !important;
+            }
+        }
+
+        /* On tablet/desktop, the frame becomes a centered card on a warm bg */
+        @media (min-width: 768px) {
+            body { background: var(--paper-warm); }
+            .frame {
+                max-width: 540px;
+                margin-top: 2rem;
+                margin-bottom: 2rem;
+                min-height: calc(100dvh - 4rem);
+                border-radius: 1.5rem;
+                box-shadow: 0 12px 40px rgba(44, 40, 32, 0.06);
+                border: 1px solid var(--ink-100);
+                overflow: hidden;
+            }
+        }
+
+        /* ===========================================================
+           QUIET HEADER — minimal, almost invisible
+           =========================================================== */
+        .header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0.85rem 1rem;
+            padding-top: calc(0.85rem + env(safe-area-inset-top));
+            padding-left: max(1rem, env(safe-area-inset-left));
+            padding-right: max(1rem, env(safe-area-inset-right));
+        }
+        @media (min-width: 768px) {
+            .header { padding: 1.25rem 1.5rem; padding-top: calc(1.25rem + env(safe-area-inset-top)); }
+        }
+        .header-mark {
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            cursor: pointer;
+        }
+        .header-icon {
+            width: 30px; height: 30px;
+            background: var(--teal-600);
+            border-radius: 0.55rem;
+            display: flex; align-items: center; justify-content: center;
+            color: white;
+        }
+        .header-title {
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--ink-600);
+            letter-spacing: -0.015em;
+        }
+        @media (min-width: 768px) {
+            .header-title { font-size: 0.95rem; }
+        }
+        .header-menu {
+            width: 40px; height: 40px;
+            display: flex; align-items: center; justify-content: center;
+            color: var(--ink-400);
+            border-radius: 0.5rem;
+            transition: background 0.15s;
+        }
+        .header-menu:active { background: var(--ink-100); }
+
+        /* ===========================================================
+           VIEWS — only one shows at a time
+           =========================================================== */
+        .view {
+            display: none;
+            padding: 0 1rem 2.5rem;
+            padding-left: max(1rem, env(safe-area-inset-left));
+            padding-right: max(1rem, env(safe-area-inset-right));
+        }
+        .view.active {
+            display: block;
+            animation: viewIn 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
+        }
+        @keyframes viewIn {
+            from { opacity: 0; transform: translateX(8px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+        @media (min-width: 768px) {
+            .view {
+                padding: 0 1.5rem 4rem;
+            }
+        }
+
+        /* ===========================================================
+           HOME — calm, spacious, one focused entry
+           =========================================================== */
+        .home-verse {
+            text-align: center;
+            margin: 0.75rem 0 1.5rem;
+            padding: 0 0.5rem;
+        }
+        @media (min-width: 768px) {
+            .home-verse { margin: 2rem 0 3rem; }
+        }
+        .home-verse .arabic-line {
+            font-size: 1.95rem;
+            color: var(--teal-800);
+            margin-bottom: 0.7rem;
+        }
+        @media (min-width: 768px) {
+            .home-verse .arabic-line { font-size: 1.85rem; }
+        }
+        .home-verse .english-line {
+            font-family: 'Merriweather', serif;
+            font-style: italic;
+            font-size: 1.05rem;
+            color: var(--ink-500);
+            line-height: 1.5;
+            margin-bottom: 0.5rem;
+        }
+        @media (min-width: 768px) {
+            .home-verse .english-line { font-size: 1.05rem; }
+        }
+        .home-verse .ref-line {
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            color: var(--ink-300);
+            font-weight: 600;
+        }
+
+        .home-prompt {
+            text-align: center;
+            font-size: 1.2rem;
+            color: var(--ink-600);
+            margin-bottom: 1.1rem;
+            font-weight: 600;
+            font-family: 'Merriweather', serif;
+        }
+        @media (min-width: 768px) {
+            .home-prompt { font-size: 1.15rem; margin-bottom: 1.5rem; }
+        }
+
+        /* ===========================================================
+           EMOTION ZONES — list rows (app-dense, not card-y)
+           =========================================================== */
+        .zone-list {
+            display: flex;
+            flex-direction: column;
+            margin-bottom: 1.75rem;
+            background: white;
+            border-radius: 0.85rem;
+            border: 1px solid var(--ink-100);
+            overflow: hidden;
+        }
+        .zone {
+            display: flex;
+            align-items: center;
+            gap: 0.85rem;
+            padding: 0.85rem 1rem;
+            background: white;
+            border: 0;
+            border-bottom: 1px solid var(--ink-100);
+            border-radius: 0;
+            transition: background 0.12s ease;
+            text-align: left;
+            width: 100%;
+        }
+        .zone:last-child { border-bottom: 0; }
+        .zone:active {
+            background: var(--paper-warm);
+        }
+        @media (min-width: 768px) {
+            .zone { padding: 1rem 1.25rem; }
+            .zone:hover { background: var(--paper-warm); }
+        }
+        .zone-icon {
+            width: 40px; height: 40px;
+            border-radius: 0.6rem;
+            display: flex; align-items: center; justify-content: center;
+            flex-shrink: 0;
+        }
+        @media (min-width: 768px) {
+            .zone-icon { width: 40px; height: 40px; }
+        }
+        .zone-icon.conflict { background: #fef2f2; color: #b91c1c; }
+        .zone-icon.inner    { background: #f5f3ff; color: #6d28d9; }
+        .zone-icon.heavy    { background: var(--sky-50); color: var(--sky-700); }
+        .zone-icon.good     { background: #fffbeb; color: #b45309; }
+        .zone-body { flex: 1; min-width: 0; }
+        .zone-title {
+            font-size: 1.02rem;
+            font-weight: 600;
+            color: var(--ink-700);
+            letter-spacing: -0.01em;
+            margin-bottom: 0.1rem;
+            line-height: 1.25;
+        }
+        @media (min-width: 768px) {
+            .zone-title { font-size: 1.05rem; margin-bottom: 0.15rem; }
+        }
+        .zone-sub {
+            font-size: 0.82rem;
+            color: var(--ink-400);
+            line-height: 1.35;
+        }
+        @media (min-width: 768px) {
+            .zone-sub { font-size: 0.85rem; }
+        }
+        .zone-chev { color: var(--ink-300); flex-shrink: 0; }
+
+        /* ===========================================================
+           QUIET LINKS at home bottom — daily habits + about
+           =========================================================== */
+        .home-links {
+            display: flex;
+            flex-direction: column;
+            padding-top: 0.5rem;
+            border-top: 1px solid var(--ink-100);
+            margin-top: 0.25rem;
+        }
+        .home-link {
+            display: flex;
+            align-items: center;
+            gap: 0.85rem;
+            padding: 0.95rem 0.5rem;
+            color: var(--ink-500);
+            font-size: 0.98rem;
+            font-weight: 500;
+            transition: color 0.15s;
+            text-align: left;
+            width: 100%;
+            border-bottom: 1px solid var(--ink-100);
+        }
+        .home-link:last-child { border-bottom: 0; }
+        @media (min-width: 768px) {
+            .home-link { font-size: 0.95rem; padding: 0.85rem 0.5rem; gap: 0.75rem; }
+        }
+        .home-link:active { color: var(--teal-700); }
+        .home-link-icon {
+            color: var(--ink-400);
+            display: flex;
+        }
+
+        /* ===========================================================
+           ZONE → SCENARIO LIST
+           =========================================================== */
+        .back-row {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--ink-400);
+            font-size: 1rem;
+            font-weight: 500;
+            margin: 0.25rem 0 1rem;
+            padding: 0.5rem 0;
+        }
+        @media (min-width: 768px) {
+            .back-row { font-size: 0.95rem; }
+        }
+        .back-row:active { color: var(--ink-600); }
+
+        .zone-header {
+            margin-bottom: 1.25rem;
+            padding-bottom: 1.25rem;
+            border-bottom: 1px solid var(--ink-100);
+        }
+        .zone-header-title {
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: var(--ink-700);
+            letter-spacing: -0.02em;
+            line-height: 1.2;
+            margin-bottom: 0.35rem;
+        }
+        @media (min-width: 768px) {
+            .zone-header-title { font-size: 1.6rem; }
+        }
+        .zone-header-sub {
+            font-size: 0.95rem;
+            color: var(--ink-400);
+            line-height: 1.5;
+        }
+        @media (min-width: 768px) {
+            .zone-header-sub { font-size: 0.95rem; }
+        }
+
+        .scenario-list {
+            display: flex;
+            flex-direction: column;
+            background: white;
+            border-radius: 0.85rem;
+            border: 1px solid var(--ink-100);
+            overflow: hidden;
+        }
+        .scenario-row {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.6rem 0.75rem;
+            background: white;
+            border-bottom: 1px solid var(--ink-100);
+            transition: background 0.12s;
+            text-align: left;
+            width: 100%;
+        }
+        .scenario-row:last-child { border-bottom: 0; }
+        @media (min-width: 768px) {
+            .scenario-row { padding: 0.75rem 0.85rem; }
+        }
+        .scenario-row-main {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            min-width: 0;
+            padding: 0.4rem 0;
+        }
+        .scenario-row-main:active { background: var(--paper-warm); }
+        .scenario-row-icon {
+            width: 36px; height: 36px;
+            border-radius: 0.45rem;
+            background: var(--paper-warm);
+            color: var(--ink-500);
+            display: flex; align-items: center; justify-content: center;
+            flex-shrink: 0;
+        }
+        @media (min-width: 768px) {
+            .scenario-row-icon { width: 36px; height: 36px; }
+        }
+        .scenario-row-title {
+            font-size: 0.98rem;
+            font-weight: 600;
+            color: var(--ink-700);
+            letter-spacing: -0.01em;
+            line-height: 1.3;
+        }
+        @media (min-width: 768px) {
+            .scenario-row-title { font-size: 1rem; }
+        }
+        .scenario-row-share {
+            width: 40px; height: 40px;
+            border-radius: 0.5rem;
+            display: flex; align-items: center; justify-content: center;
+            color: var(--ink-300);
+            transition: background 0.15s, color 0.15s;
+            flex-shrink: 0;
+        }
+        @media (min-width: 768px) {
+            .scenario-row-share { width: 40px; height: 40px; }
+        }
+        .scenario-row-share:active {
+            background: var(--teal-50);
+            color: var(--teal-700);
+        }
+
+        /* ===========================================================
+           SCENARIO DETAIL — Action is the visual hero
+           =========================================================== */
+        .detail-eyebrow {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            color: var(--ink-300);
+            font-weight: 700;
+            margin-bottom: 0.6rem;
+        }
+        .detail-title {
+            font-size: 1.7rem;
+            font-weight: 700;
+            color: var(--ink-700);
+            letter-spacing: -0.02em;
+            line-height: 1.2;
+            margin-bottom: 1.5rem;
+        }
+        @media (min-width: 768px) {
+            .detail-title { font-size: 1.65rem; }
+        }
+
+        /* The Action — visual centerpiece, in thumb zone after small title */
+        .action-block {
+            background: var(--sage-50);
+            border: 1px solid var(--sage-100);
+            border-radius: 1rem;
+            padding: 1.5rem 1.25rem;
+            margin-bottom: 1.25rem;
+            position: relative;
+        }
+        .action-eyebrow {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            color: var(--sage-700);
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+        .action-text {
+            font-family: 'Merriweather', serif;
+            font-size: 1.3rem;
+            font-weight: 400;
+            line-height: 1.45;
+            color: var(--sage-900);
+            text-align: center;
+            letter-spacing: -0.01em;
+        }
+        @media (min-width: 768px) {
+            .action-text { font-size: 1.5rem; }
+        }
+
+        .pivot-quiet {
+            text-align: center;
+            font-style: italic;
+            font-size: 1rem;
+            color: var(--ink-400);
+            line-height: 1.5;
+            padding: 0.25rem 1rem 1.5rem;
+            font-family: 'Merriweather', serif;
+        }
+        @media (min-width: 768px) {
+            .pivot-quiet { font-size: 1rem; }
+        }
+        .pivot-quiet::before { content: '"'; }
+        .pivot-quiet::after { content: '"'; }
+
+        /* The two thumb-zone buttons */
+        .thumb-actions {
+            display: flex;
+            flex-direction: column;
+            gap: 0.55rem;
+            margin-bottom: 2rem;
+        }
+        .btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.6rem;
+            min-height: 52px;
+            padding: 0 1.5rem;
+            border-radius: 0.75rem;
+            font-size: 1rem;
+            font-weight: 600;
+            transition: transform 0.1s, background 0.15s;
+            -webkit-tap-highlight-color: transparent;
+        }
+        @media (min-width: 768px) {
+            .btn { min-height: 54px; font-size: 1rem; }
+        }
+        .btn:active { transform: scale(0.98); }
+        .btn-primary {
+            background: var(--teal-600);
+            color: white;
+        }
+        .btn-primary:active { background: var(--teal-700); }
+        .btn-secondary {
+            background: var(--sky-50);
+            color: var(--sky-700);
+            border: 1px solid var(--sky-100);
+        }
+        .btn-secondary:active { background: var(--sky-100); }
+
+        /* Why this works — natural scroll, no expand */
+        .story-block {
+            padding-top: 1.5rem;
+            border-top: 1px solid var(--ink-100);
+        }
+        .story-eyebrow {
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            color: var(--ink-300);
+            font-weight: 700;
+            margin-bottom: 0.85rem;
+        }
+        .story-truth {
+            font-family: 'Merriweather', serif;
+            font-size: 1.15rem;
+            line-height: 1.55;
+            color: var(--ink-600);
+            margin-bottom: 1.25rem;
+            padding-left: 0.9rem;
+            border-left: 3px solid var(--teal-200);
+        }
+        @media (min-width: 768px) {
+            .story-truth { font-size: 1.15rem; }
+        }
+        .story-prose {
+            font-family: 'Merriweather', serif;
+            font-size: 1.05rem;
+            line-height: 1.8;
+            color: var(--ink-500);
+        }
+        @media (min-width: 768px) {
+            .story-prose { font-size: 1.05rem; }
+        }
+        .story-prose p { margin-bottom: 1rem; }
+        .story-prose p:last-child { margin-bottom: 0; }
+        .story-prose .story-quote {
+            background: var(--teal-50);
+            border-left: 3px solid var(--teal-400);
+            padding: 1rem 1.15rem;
+            margin: 1.25rem 0;
+            border-radius: 0 0.5rem 0.5rem 0;
+            font-size: 1rem;
+            font-style: italic;
+            color: var(--teal-900);
+        }
+        @media (min-width: 768px) {
+            .story-prose .story-quote { font-size: 1rem; padding: 1rem 1.25rem; }
+        }
+        .story-prose .story-quote-ref {
+            display: block;
+            margin-top: 0.5rem;
+            font-style: normal;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.72rem;
+            font-weight: 600;
+            color: var(--teal-700);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        /* Related practice card at end of detail */
+        .related-practice {
+            margin-top: 2rem;
+            padding: 1rem 1.15rem;
+            background: var(--paper-warm);
+            border-radius: 0.85rem;
+            display: flex;
+            align-items: center;
+            gap: 0.85rem;
+            text-align: left;
+            width: 100%;
+            transition: transform 0.1s;
+        }
+        .related-practice:active { transform: scale(0.99); }
+        .related-practice-icon {
+            width: 40px; height: 40px;
+            border-radius: 0.55rem;
+            background: white;
+            color: var(--teal-700);
+            display: flex; align-items: center; justify-content: center;
+            flex-shrink: 0;
+        }
+        @media (min-width: 768px) {
+            .related-practice-icon { width: 40px; height: 40px; }
+        }
+        .related-practice-text { flex: 1; min-width: 0; }
+        .related-practice-eyebrow {
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--ink-300);
+            font-weight: 700;
+            margin-bottom: 0.2rem;
+        }
+        .related-practice-title {
+            font-size: 0.98rem;
+            font-weight: 600;
+            color: var(--ink-600);
+            line-height: 1.3;
+        }
+        @media (min-width: 768px) {
+            .related-practice-title { font-size: 0.95rem; }
+        }
+
+        /* ===========================================================
+           DAILY HABITS VIEW
+           =========================================================== */
+        .habits-intro {
+            font-size: 1rem;
+            color: var(--ink-400);
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+        }
+        @media (min-width: 768px) {
+            .habits-intro { font-size: 1rem; }
+        }
+        .habit-card {
+            background: white;
+            border: 1px solid var(--ink-100);
+            border-radius: 0.85rem;
+            padding: 1.15rem;
+            margin-bottom: 0.75rem;
+            display: flex;
+            gap: 0.85rem;
+            align-items: flex-start;
+        }
+        .habit-icon {
+            width: 44px; height: 44px;
+            border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            flex-shrink: 0;
+        }
+        @media (min-width: 768px) {
+            .habit-icon { width: 44px; height: 44px; }
+        }
+        .habit-icon.h1, .related-practice-icon.h1 { background: var(--sky-50); color: var(--sky-700); }
+        .habit-icon.h2, .related-practice-icon.h2 { background: #f5f3ff; color: #6d28d9; }
+        .habit-icon.h3, .related-practice-icon.h3 { background: var(--sage-50); color: var(--sage-700); }
+        .habit-body { flex: 1; }
+        .habit-title {
+            font-size: 1.05rem;
+            font-weight: 700;
+            color: var(--ink-700);
+            margin-bottom: 0.3rem;
+            letter-spacing: -0.01em;
+        }
+        @media (min-width: 768px) {
+            .habit-title { font-size: 1.05rem; }
+        }
+        .habit-desc {
+            font-size: 0.95rem;
+            color: var(--ink-500);
+            line-height: 1.55;
+        }
+        @media (min-width: 768px) {
+            .habit-desc { font-size: 0.95rem; }
+        }
+
+        /* ===========================================================
+           ABOUT VIEW
+           =========================================================== */
+        .about-prose {
+            font-family: 'Merriweather', serif;
+            font-size: 1.05rem;
+            line-height: 1.8;
+            color: var(--ink-500);
+        }
+        @media (min-width: 768px) {
+            .about-prose { font-size: 1.05rem; }
+        }
+        .about-prose p { margin-bottom: 1.1rem; }
+        .about-callout {
+            background: var(--teal-50);
+            border-left: 3px solid var(--teal-400);
+            padding: 1.15rem;
+            margin: 1.25rem 0;
+            border-radius: 0 0.5rem 0.5rem 0;
+        }
+        .about-callout .arabic-line {
+            font-family: 'Amiri', serif;
+            direction: rtl;
+            font-size: 1.25rem;
+            color: var(--teal-900);
+            margin-bottom: 0.45rem;
+            line-height: 1.7;
+        }
+        .about-callout .english-line {
+            font-style: italic;
+            color: var(--teal-800);
+            font-size: 0.95rem;
+            margin-bottom: 0.2rem;
+        }
+        .about-callout .ref-line {
+            font-style: normal;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            font-weight: 600;
+            color: var(--teal-700);
+        }
+
+        .about-mirror {
+            margin-top: 2rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid var(--ink-100);
+            display: none;
+        }
+        .about-mirror.visible { display: block; }
+        .about-mirror-eyebrow {
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            color: var(--ink-300);
+            font-weight: 700;
+            margin-bottom: 0.75rem;
+        }
+        .about-mirror-stats {
+            display: flex;
+            gap: 1.5rem;
+            margin-bottom: 0.85rem;
+        }
+        .about-mirror-stat {
+            flex: 1;
+        }
+        .about-mirror-num {
+            font-size: 1.7rem;
+            font-weight: 700;
+            color: var(--ink-700);
+            font-family: 'Merriweather', serif;
+            line-height: 1;
+            margin-bottom: 0.3rem;
+        }
+        .about-mirror-label {
+            font-size: 0.8rem;
+            color: var(--ink-400);
+        }
+        .about-mirror-dua {
+            font-style: italic;
+            font-family: 'Merriweather', serif;
+            color: var(--ink-400);
+            font-size: 0.95rem;
+            line-height: 1.55;
+        }
+
+        /* ===========================================================
+           FOOTER (only shows on home view)
+           =========================================================== */
+        .footer-dua {
+            text-align: center;
+            padding: 2rem 1.25rem 1.5rem;
+            border-top: 1px solid var(--ink-100);
+            margin-top: 1.5rem;
+            display: none;
+        }
+        body.on-home .footer-dua { display: block; }
+        .footer-dua .arabic-line {
+            font-size: 1.1rem;
+            color: var(--teal-800);
+            margin-bottom: 0.45rem;
+            line-height: 1.85;
+        }
+        .footer-dua .english-line {
+            font-family: 'Merriweather', serif;
+            font-style: italic;
+            font-size: 0.88rem;
+            color: var(--ink-400);
+            margin-bottom: 0.75rem;
+        }
+        .footer-dua .small {
+            font-size: 0.78rem;
+            color: var(--ink-300);
+        }
+
+        /* ===========================================================
+           BREATHING OVERLAY — used as splash and on-demand tool
+           =========================================================== */
+        .breath-overlay {
+            position: fixed; inset: 0; z-index: 100;
+            background: linear-gradient(160deg, var(--paper) 0%, #e6f7f4 100%);
+            display: none;
+            flex-direction: column;
+            text-align: center;
+            opacity: 0;
+            transition: opacity 0.4s ease;
+            overflow-y: auto;
+            scrollbar-width: none;
+            -ms-overflow-style: none;
+        }
+        .breath-overlay::-webkit-scrollbar { display: none; }
+        .breath-overlay.visible { display: flex; opacity: 1; }
+        .breath-inner {
+            flex: 1 0 auto;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem 1.5rem;
+            padding-top: calc(2rem + env(safe-area-inset-top));
+            padding-bottom: calc(2rem + env(safe-area-inset-bottom));
+        }
+        .breath-overlay.visible { display: flex; opacity: 1; }
+        .breath-close {
+            position: absolute;
+            top: calc(1rem + env(safe-area-inset-top));
+            right: 1rem;
+            width: 44px; height: 44px;
+            display: flex; align-items: center; justify-content: center;
+            color: var(--ink-400);
+            background: rgba(255,255,255,0.7);
+            border-radius: 50%;
+        }
+        .breath-mark {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.65rem;
+            margin-bottom: 1.5rem;
+        }
+        .breath-mark-icon {
+            width: 44px; height: 44px;
+            background: white;
+            border-radius: 0.75rem;
+            display: flex; align-items: center; justify-content: center;
+            color: var(--teal-600);
+            box-shadow: 0 2px 8px rgba(13, 148, 136, 0.1);
+        }
+        .breath-mark-title {
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--teal-800);
+        }
+        .breath-verse {
+            margin-bottom: 1.75rem;
+            max-width: 22rem;
+        }
+        .breath-verse .arabic-line {
+            font-family: 'Amiri', serif;
+            direction: rtl;
+            font-size: 1.65rem;
+            color: var(--teal-800);
+            margin-bottom: 0.6rem;
+            line-height: 1.65;
+        }
+        .breath-verse .english-line {
+            font-family: 'Merriweather', serif;
+            font-style: italic;
+            font-size: 1rem;
+            color: var(--teal-700);
+        }
+        .breath-circle-wrap {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+        .breath-circle {
+            width: 160px; height: 160px;
+            border-radius: 50%;
+            background: radial-gradient(circle at 35% 35%, rgba(45, 212, 191, 0.55) 0%, rgba(13, 148, 136, 0.35) 50%, rgba(13, 148, 136, 0.15) 100%);
+            border: 2px solid rgba(13, 148, 136, 0.6);
+            box-shadow: 0 8px 24px rgba(13, 148, 136, 0.15);
+        }
+        @media (min-width: 768px) {
+            .breath-circle { width: 160px; height: 160px; }
+        }
+        .breath-circle.animating { animation: breathe 10s ease-in-out infinite; }
+        @keyframes breathe {
+            0%   { transform: scale(0.7); opacity: 0.5; }
+            40%  { transform: scale(1.4); opacity: 1; border-color: rgba(13, 148, 136, 0.6); }
+            60%  { transform: scale(1.4); opacity: 1; border-color: rgba(13, 148, 136, 0.6); }
+            100% { transform: scale(0.7); opacity: 0.5; }
+        }
+        .breath-label {
+            font-size: 0.85rem;
+            letter-spacing: 0.25em;
+            text-transform: uppercase;
+            color: var(--teal-800);
+            font-weight: 700;
+            min-height: 1rem;
+            transition: opacity 0.4s;
+            margin-top: 0.5rem;
+        }
+
+        .breath-controls {
+            display: flex;
+            flex-direction: column;
+            gap: 0.65rem;
+            width: 100%;
+            max-width: 22rem;
+        }
+        .breath-btn {
+            min-height: 52px;
+            padding: 0 1.5rem;
+            border-radius: 9999px;
+            font-size: 0.95rem;
+            font-weight: 600;
+            transition: transform 0.1s;
+        }
+        .breath-btn:active { transform: scale(0.98); }
+        .breath-btn-primary {
+            background: white;
+            color: var(--teal-700);
+            border: 1px solid var(--teal-200);
+        }
+        .breath-btn-secondary {
+            background: transparent;
+            color: var(--sky-700);
+            border: 1px solid rgba(46, 125, 160, 0.3);
+        }
+
+        /* ===========================================================
+           A2HS BANNER — shows once, contextually, after 3 visits
+           =========================================================== */
+        .a2hs-modal-wrap {
+            position: fixed; inset: 0; z-index: 80;
+            background: rgba(28, 25, 20, 0.5);
+            backdrop-filter: blur(4px);
+            display: none;
+            align-items: flex-end;
+            justify-content: center;
+            padding: 1rem;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+        @media (min-width: 768px) {
+            .a2hs-modal-wrap { align-items: center; }
+        }
+        .a2hs-modal-wrap.visible { display: flex; opacity: 1; }
+        .a2hs-modal {
+            background: white;
+            width: 100%;
+            max-width: 28rem;
+            border-radius: 1.25rem 1.25rem 0 0;
+            padding: 2rem 1.5rem 1.5rem;
+            transform: translateY(100%);
+            transition: transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
+            position: relative;
+            padding-bottom: calc(1.5rem + env(safe-area-inset-bottom));
+        }
+        @media (min-width: 768px) {
+            .a2hs-modal { border-radius: 1.25rem; transform: scale(0.95); }
+            .a2hs-modal-wrap.visible .a2hs-modal { transform: scale(1); }
+        }
+        .a2hs-modal-wrap.visible .a2hs-modal { transform: translateY(0); }
+        @media (min-width: 768px) {
+            .a2hs-modal-wrap.visible .a2hs-modal { transform: scale(1); }
+        }
+        .a2hs-modal::before {
+            content: '';
+            position: absolute; top: 0.5rem; left: 50%;
+            transform: translateX(-50%);
+            width: 2.5rem; height: 0.25rem;
+            background: var(--ink-200);
+            border-radius: 9999px;
+        }
+        @media (min-width: 768px) {
+            .a2hs-modal::before { display: none; }
+        }
+        .a2hs-icon-wrap {
+            width: 56px; height: 56px;
+            background: var(--teal-50);
+            color: var(--teal-700);
+            border-radius: 50%;
+            margin: 0 auto 1.25rem;
+            display: flex; align-items: center; justify-content: center;
+        }
+        .a2hs-title {
+            text-align: center;
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--ink-700);
+            margin-bottom: 0.5rem;
+            letter-spacing: -0.01em;
+        }
+        .a2hs-desc {
+            text-align: center;
+            color: var(--ink-400);
+            font-size: 0.95rem;
+            line-height: 1.55;
+            margin-bottom: 1.5rem;
+        }
+        .a2hs-steps {
+            background: var(--paper-warm);
+            border-radius: 0.85rem;
+            padding: 1.25rem;
+            margin-bottom: 1.25rem;
+        }
+        .a2hs-step {
+            display: flex;
+            gap: 0.75rem;
+            margin-bottom: 0.85rem;
+            align-items: center;
+        }
+        .a2hs-step:last-child { margin-bottom: 0; }
+        .a2hs-step-num {
+            width: 24px; height: 24px;
+            background: white;
+            color: var(--teal-700);
+            border-radius: 50%;
+            font-size: 0.8rem;
+            font-weight: 700;
+            display: flex; align-items: center; justify-content: center;
+            flex-shrink: 0;
+        }
+        .a2hs-step-text {
+            font-size: 0.9rem;
+            color: var(--ink-500);
+            line-height: 1.5;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+        }
+        .a2hs-step-text svg {
+            color: var(--ink-400);
+        }
+        .a2hs-actions {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+        .a2hs-dismiss {
+            text-align: center;
+            color: var(--ink-400);
+            font-size: 0.9rem;
+            font-weight: 500;
+            padding: 0.85rem;
+        }
+
+        /* ===========================================================
+           MENU SHEET (for the … in header) — about / habits / install
+           =========================================================== */
+        .menu-sheet-wrap {
+            position: fixed; inset: 0; z-index: 70;
+            background: rgba(28, 25, 20, 0.4);
+            backdrop-filter: blur(2px);
+            display: none;
+            align-items: flex-end;
+            opacity: 0;
+            transition: opacity 0.25s;
+        }
+        .menu-sheet-wrap.visible { display: flex; opacity: 1; }
+        .menu-sheet {
+            background: white;
+            width: 100%;
+            border-radius: 1.25rem 1.25rem 0 0;
+            padding: 1rem 0.5rem;
+            padding-bottom: calc(1rem + env(safe-area-inset-bottom));
+            transform: translateY(100%);
+            transition: transform 0.35s cubic-bezier(0.2, 0.8, 0.2, 1);
+            position: relative;
+            max-width: 540px;
+            margin: 0 auto;
+        }
+        .menu-sheet-wrap.visible .menu-sheet { transform: translateY(0); }
+        .menu-sheet::before {
+            content: '';
+            position: absolute; top: 0.5rem; left: 50%;
+            transform: translateX(-50%);
+            width: 2.5rem; height: 0.25rem;
+            background: var(--ink-200);
+            border-radius: 9999px;
+        }
+        .menu-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1rem 1.25rem;
+            color: var(--ink-600);
+            font-size: 1rem;
+            font-weight: 500;
+            border-radius: 0.75rem;
+            margin-top: 0.85rem;
+            text-align: left;
+            width: 100%;
+            transition: background 0.15s;
+        }
+        .menu-item:active { background: var(--paper-warm); }
+        .menu-item-icon {
+            color: var(--ink-400);
+            display: flex;
+        }
+
+        /* ===========================================================
+           TOAST
+           =========================================================== */
+        .toast {
+            position: fixed;
+            bottom: calc(2rem + env(safe-area-inset-bottom));
+            left: 50%;
+            transform: translateX(-50%) translateY(20px);
+            background: var(--ink-700);
+            color: white;
+            padding: 0.85rem 1.5rem;
+            border-radius: 9999px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.25s, transform 0.25s;
+            z-index: 200;
+            max-width: calc(100% - 2rem);
+            white-space: nowrap;
+        }
+        .toast.visible {
+            opacity: 1;
+            transform: translateX(-50%) translateY(0);
+        }
+
+        /* Hide focus ring on mouse, keep for keyboard */
+        :focus:not(:focus-visible) { outline: none; }
+        :focus-visible { outline: 2px solid var(--teal-600); outline-offset: 2px; border-radius: 4px; }
+    </style>
+</head>
+<body>
+
+<!-- ===== BREATHING OVERLAY (splash + on-demand) ===== -->
+<div id="breath-overlay" class="breath-overlay">
+    <div class="breath-inner">
+    <button class="breath-close" onclick="closeBreath()" aria-label="Close">
+        <i data-lucide="x" width="22" height="22"></i>
+    </button>
+
+    <div class="breath-mark">
+        <div class="breath-mark-icon">
+            <i data-lucide="heart" width="22" height="22"></i>
+        </div>
+        <div class="breath-mark-title">The Mirror of Mercy</div>
+    </div>
+
+    <div class="breath-verse">
+        <div class="arabic-line" lang="ar">إِنَّ رَحْمَتِي تَغْلِبُ غَضَبِي</div>
+        <div class="english-line">"My mercy prevails over My wrath."</div>
+    </div>
+
+    <div class="breath-circle-wrap">
+        <div id="breath-circle" class="breath-circle"></div>
+        <div id="breath-label" class="breath-label">Breathe in</div>
+    </div>
+
+    <div id="breath-controls-splash" class="breath-controls">
+        <button class="breath-btn breath-btn-primary" onclick="closeBreath()">I'm ready</button>
+    </div>
+
+    <div id="breath-controls-finish" class="breath-controls" style="display:none;">
+        <button class="breath-btn breath-btn-secondary" onclick="continueBreathing()">Another minute</button>
+        <button class="breath-btn breath-btn-primary" onclick="closeBreath()">I'm ready</button>
+    </div>
+    </div>
+</div>
+
+<!-- ===== FRAME ===== -->
+<div class="frame">
+
+    <!-- Header -->
+    <header class="header">
+        <div class="header-mark" onclick="goHome()" role="button" tabindex="0" onkeydown="if(event.key==='Enter'){goHome()}">
+            <div class="header-icon"><i data-lucide="heart" width="18" height="18"></i></div>
+            <div class="header-title">Mercy</div>
+        </div>
+        <button class="header-menu" onclick="openMenu()" aria-label="Menu">
+            <i data-lucide="more-horizontal" width="22" height="22"></i>
+        </button>
+    </header>
+
+    <main role="main">
+
+    <!-- ============================================================
+         VIEW: HOME
+         ============================================================ -->
+    <div id="view-home" class="view active">
+
+        <div class="home-verse">
+            <div class="arabic arabic-line" lang="ar">كَتَبَ عَلَىٰ نَفْسِهِ الرَّحْمَةَ</div>
+            <div class="english-line">"He has prescribed for Himself mercy."</div>
+            <div class="ref-line">Quran 6:12</div>
+        </div>
+
+        <h1 class="home-prompt" tabindex="-1">What's happening?</h1>
+
+        <div class="zone-list" id="zone-list">
+            <!-- injected by JS -->
+        </div>
+
+        <div class="home-links">
+            <button class="home-link" onclick="showHabits()">
+                <span class="home-link-icon"><i data-lucide="sun" width="18" height="18"></i></span>
+                <span>Daily habits of mercy</span>
+            </button>
+            <button class="home-link" onclick="showAbout()">
+                <span class="home-link-icon"><i data-lucide="info" width="18" height="18"></i></span>
+                <span>About this guide</span>
+            </button>
+        </div>
+
+    </div>
+
+    <!-- ============================================================
+         VIEW: ZONE (list of scenarios within an emotion)
+         ============================================================ -->
+    <div id="view-zone" class="view">
+        <button class="back-row" onclick="goHome()">
+            <i data-lucide="chevron-left" width="20" height="20"></i> Back
+        </button>
+
+        <div class="zone-header">
+            <h2 id="zone-title" class="zone-header-title" tabindex="-1"></h2>
+            <p id="zone-sub" class="zone-header-sub"></p>
+        </div>
+
+        <div class="scenario-list" id="scenario-list"></div>
+    </div>
+
+    <!-- ============================================================
+         VIEW: SCENARIO DETAIL
+         ============================================================ -->
+    <div id="view-detail" class="view">
+        <button class="back-row" onclick="backFromDetail()">
+            <i data-lucide="chevron-left" width="20" height="20"></i> Back
+        </button>
+
+        <div class="detail-eyebrow" id="detail-eyebrow"></div>
+        <h2 id="detail-title" class="detail-title" tabindex="-1"></h2>
+
+        <div class="action-block">
+            <div class="action-eyebrow">
+                <i data-lucide="zap" width="13" height="13"></i> What to do right now
+            </div>
+            <p id="detail-action" class="action-text"></p>
+        </div>
+
+        <p id="detail-pivot" class="pivot-quiet"></p>
+
+        <div class="thumb-actions">
+            <button id="detail-share-btn" class="btn btn-primary" onclick="shareScenario()">
+                <i data-lucide="share-2" width="18" height="18"></i> Send to someone
+            </button>
+            <button class="btn btn-secondary" onclick="openBreath('detail')">
+                <i data-lucide="wind" width="18" height="18"></i> Breathe with me
+            </button>
+        </div>
+
+        <div class="story-block">
+            <div class="story-eyebrow">Why this works</div>
+            <p id="detail-truth" class="story-truth"></p>
+            <div id="detail-story" class="story-prose"></div>
+        </div>
+
+        <button class="related-practice" id="next-mercy" onclick="openNextMercy()" style="display:none; margin-top: 2.5rem;">
+            <div class="related-practice-icon" id="next-mercy-icon" style="background: var(--teal-50); color: var(--teal-700);">
+                <i data-lucide="arrow-right" width="18" height="18"></i>
+            </div>
+            <div class="related-practice-text">
+                <div class="related-practice-eyebrow">Another mercy you might need</div>
+                <div class="related-practice-title" id="next-mercy-title"></div>
+            </div>
+            <i data-lucide="chevron-right" width="18" height="18" style="color: var(--ink-300);"></i>
+        </button>
+
+        <button class="related-practice" id="related-practice" onclick="showHabits()">
+            <div id="related-practice-icon" class="related-practice-icon">
+                <i data-lucide="sun" width="18" height="18"></i>
+            </div>
+            <div class="related-practice-text">
+                <div class="related-practice-eyebrow">A daily practice for this</div>
+                <div id="related-practice-title" class="related-practice-title">Three small habits of mercy</div>
+            </div>
+            <i data-lucide="chevron-right" width="18" height="18" style="color: var(--ink-300);"></i>
+        </button>
+    </div>
+
+    <!-- ============================================================
+         VIEW: DAILY HABITS
+         ============================================================ -->
+    <div id="view-habits" class="view">
+        <button class="back-row" onclick="goHome()">
+            <i data-lucide="chevron-left" width="20" height="20"></i> Back
+        </button>
+
+        <div class="zone-header">
+            <h2 class="zone-header-title" tabindex="-1">Daily habits of mercy</h2>
+            <p class="zone-header-sub">Three small practices to build your mercy muscle every day.</p>
+        </div>
+
+        <div class="habit-card">
+            <div class="habit-icon h1"><i data-lucide="timer" width="22" height="22"></i></div>
+            <div class="habit-body">
+                <h3 class="habit-title">The Nano-Second Pause</h3>
+                <p class="habit-desc">Before reacting to anger or frustration today, force yourself to take one deep breath. That 1-second delay is where mercy is chosen.</p>
+            </div>
+        </div>
+
+        <div class="habit-card">
+            <div class="habit-icon h2"><i data-lucide="message-circle-heart" width="22" height="22"></i></div>
+            <div class="habit-body">
+                <h3 class="habit-title">The Silent Prayer</h3>
+                <p class="habit-desc">When you feel jealousy or resentment toward someone, secretly pray for Allah to give them more. It instantly cleanses your heart of bitterness.</p>
+            </div>
+        </div>
+
+        <div class="habit-card">
+            <div class="habit-icon h3"><i data-lucide="eye-off" width="22" height="22"></i></div>
+            <div class="habit-body">
+                <h3 class="habit-title">The Secret Act</h3>
+                <p class="habit-desc">Do one kind thing today that absolutely no one finds out about. Pick up trash, make a hidden donation, or fix something quietly.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- ============================================================
+         VIEW: ABOUT
+         ============================================================ -->
+    <div id="view-about" class="view">
+        <button class="back-row" onclick="goHome()">
+            <i data-lucide="chevron-left" width="20" height="20"></i> Back
+        </button>
+
+        <div class="zone-header">
+            <h2 class="zone-header-title" tabindex="-1">Where this comes from</h2>
+            <p class="zone-header-sub">A simple introduction.</p>
+        </div>
+
+        <div class="about-prose">
+            <p>In the Quran, Allah makes a profound promise that serves as the foundation for how He deals with His creation: <strong>"He has prescribed for Himself mercy."</strong> <em>(Surah Al-An'am 6:12)</em></p>
+            <p>And in Islamic tradition, we learn that before the universe was even created, He inscribed this rule above His Throne: <strong>"My mercy prevails over My wrath."</strong> <em>(Hadith Qudsi, Sahih al-Bukhari 7404)</em></p>
+
+            <div class="about-callout">
+                <div class="arabic-line" lang="ar">وَرَحْمَتِي وَسِعَتْ كُلَّ شَيْءٍ</div>
+                <div class="english-line">"And My mercy encompasses all things."</div>
+                <div class="ref-line">Surah Al-A'raf 7:156</div>
+            </div>
+
+            <p>This means that compassion, forgiveness, and love come first — before anger or punishment. This is the guiding principle of how Allah runs the universe.</p>
+
+            <p><strong>Why this guide exists:</strong></p>
+            <p>We are humans, and we cannot control the big universe. But we <em>can</em> control the tiny universe inside our own hearts. The goal here is to take that beautiful rule from Allah and apply it to our own everyday choices.</p>
+            <p>When someone makes you mad, or you make a mistake, you have a split second to react. We call that <em>the nano-second</em>. This guide helps kids and adults alike pause in that exact second and choose mercy — just like Allah does.</p>
+        </div>
+
+        <div id="about-mirror" class="about-mirror">
+            <div class="about-mirror-eyebrow">Your quiet mirror</div>
+            <div class="about-mirror-stats">
+                <div class="about-mirror-stat">
+                    <div id="mirror-encountered" class="about-mirror-num">0</div>
+                    <div class="about-mirror-label">Mercies encountered</div>
+                </div>
+                <div class="about-mirror-stat">
+                    <div id="mirror-shared" class="about-mirror-num">0</div>
+                    <div class="about-mirror-label">Passed forward</div>
+                </div>
+            </div>
+            <p id="mirror-dua" class="about-mirror-dua" style="display:none;">May Allah make this knowledge weighty in your scale.</p>
+        </div>
+    </div>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer-dua">
+        <div class="arabic" lang="ar" style="font-size:1.1rem; color: var(--teal-800); margin-bottom: 0.45rem; line-height: 1.85;">رَبَّنَا آتِنَا فِي الدُّنْيَا حَسَنَةً وَفِي الْآخِرَةِ حَسَنَةً</div>
+        <div class="serif" style="font-style:italic; font-size: 0.88rem; color: var(--ink-400); margin-bottom: 0.75rem;">"Our Lord, grant us good in this world and good in the next."</div>
+        <div class="small" style="font-size: 0.78rem; color: var(--ink-300);">Free to share. May Allah accept it.</div>
+    </footer>
+
+</div><!-- /.frame -->
+
+<!-- ===== MENU SHEET ===== -->
+<div id="menu-sheet-wrap" class="menu-sheet-wrap" onclick="closeMenuSheet(event)">
+    <div class="menu-sheet" onclick="event.stopPropagation()">
+        <button class="menu-item" onclick="closeMenu(); showHabits();">
+            <span class="menu-item-icon"><i data-lucide="sun" width="20" height="20"></i></span>
+            <span>Daily habits</span>
+        </button>
+        <button class="menu-item" onclick="closeMenu(); showAbout();">
+            <span class="menu-item-icon"><i data-lucide="info" width="20" height="20"></i></span>
+            <span>About this guide</span>
+        </button>
+        <button class="menu-item" onclick="closeMenu(); showA2HS();" id="menu-install-btn">
+            <span class="menu-item-icon"><i data-lucide="plus-square" width="20" height="20"></i></span>
+            <span>Add to home screen</span>
+        </button>
+    </div>
+</div>
+
+<!-- ===== A2HS MODAL ===== -->
+<div id="a2hs-wrap" class="a2hs-modal-wrap" onclick="closeA2HS(event)">
+    <div class="a2hs-modal" onclick="event.stopPropagation()">
+        <div class="a2hs-icon-wrap"><i data-lucide="heart" width="28" height="28"></i></div>
+        <h3 class="a2hs-title">Keep Mercy close</h3>
+        <p class="a2hs-desc">Add this guide to your home screen so it opens like an app — and works even when you're offline.</p>
+
+        <div id="a2hs-ios" class="a2hs-steps" style="display:none;">
+            <div class="a2hs-step">
+                <div class="a2hs-step-num">1</div>
+                <div class="a2hs-step-text">
+                    Tap the Share button
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"/><polyline points="16 6 12 2 8 6"/><line x1="12" y1="2" x2="12" y2="15"/></svg>
+                    at the bottom of Safari
+                </div>
+            </div>
+            <div class="a2hs-step">
+                <div class="a2hs-step-num">2</div>
+                <div class="a2hs-step-text">
+                    Scroll and tap <strong style="color: var(--ink-600);">Add to Home Screen</strong>
+                    <i data-lucide="plus-square" width="16" height="16"></i>
+                </div>
+            </div>
+        </div>
+
+        <div id="a2hs-android" class="a2hs-steps" style="display:none;">
+            <div class="a2hs-step">
+                <div class="a2hs-step-num">1</div>
+                <div class="a2hs-step-text">
+                    Tap the menu
+                    <i data-lucide="more-vertical" width="16" height="16"></i>
+                    in the top right of Chrome
+                </div>
+            </div>
+            <div class="a2hs-step">
+                <div class="a2hs-step-num">2</div>
+                <div class="a2hs-step-text">
+                    Tap <strong style="color: var(--ink-600);">Add to Home screen</strong>
+                    <i data-lucide="download" width="16" height="16"></i>
+                </div>
+            </div>
+        </div>
+
+        <div id="a2hs-desktop" class="a2hs-steps" style="display:none;">
+            <div class="a2hs-step">
+                <div class="a2hs-step-text">Open this page on your phone (Safari on iPhone, or Chrome on Android) to add it to your home screen.</div>
+            </div>
+        </div>
+
+        <div class="a2hs-actions">
+            <button class="a2hs-dismiss" onclick="closeA2HSDirect()">Got it</button>
+        </div>
+    </div>
+</div>
+
+<!-- Toast -->
+<div id="toast" class="toast"></div>
+
+<script>
+// ============================================================
+// SAFE HISTORY API
+// ============================================================
+function safeReplaceState(url) {
+    try { window.history.replaceState(null, '', url); }
+    catch (e) { /* silent */ }
+}
+
+// ============================================================
+// CONTENT
+// ============================================================
+const zoneToHabit = {
+    conflict: { id: 'pause', icon: 'timer', title: 'The Nano-Second Pause', cls: 'h1' },
+    inner:    { id: 'prayer', icon: 'message-circle-heart', title: 'The Silent Prayer', cls: 'h2' },
+    heavy:    { id: 'secret', icon: 'eye-off', title: 'The Secret Act', cls: 'h3' },
+    good:     { id: 'secret', icon: 'eye-off', title: 'The Secret Act', cls: 'h3' }
+};
+const zones = [
+    { id: 'conflict', icon: 'swords', title: 'Someone hurt me', sub: 'Anger, conflict, hard people', long: 'When someone hurts you, when conflict erupts, when you need protection from harm.' },
+    { id: 'inner', icon: 'user', title: 'I made a mistake', sub: 'Guilt, regret, anxiety, jealousy', long: 'When you are hard on yourself, when you wronged someone, when you compare, when you fear what comes next.' },
+    { id: 'heavy', icon: 'cloud-rain', title: 'Life feels heavy', sub: 'Loss, exhaustion, waiting, doubt', long: 'When you grieve, when you are tired, when you are still waiting, when faith itself feels distant.' },
+    { id: 'good', icon: 'sun', title: 'Life feels good', sub: 'Gratitude, blessings, clarity', long: 'Even good moments are a test. The hardest mercy is remembering Allah when everything is going right.' }
+];
+
+const scenarios = [
+    { id: 'human-collision', zone: 'conflict', title: "Someone is angry at me", icon: 'swords',
+        truth: "Fighting fire with fire only burns you. Forgiveness stops the fire from spreading.",
+        pivot: "Am I reacting to protect my peace, or just to feed my pride?",
+        action: "Take a deep breath. Wait a minute before saying anything. Try to see why they are hurting inside, instead of focusing on their yelling.",
+        story: `<p>When someone is angry, it is like they are holding a hot coal. If they throw it at you, throwing it back only burns your hands too. The best way to win is to not play the game of anger at all.</p><p>Look at what happened when the Prophet Muhammad ﷺ returned to the city of Mecca after being chased out years before. The people there had insulted him, beaten his companions, and even tried to kill him. When he finally walked back into that city as the leader of an army, every single one of them expected revenge.</p><p>Instead, he gathered them and said, "Go, for you are free." He forgave them all. In one nano-second, he ended a war that had lasted for years.</p><p>The Prophet ﷺ also taught us a beautiful promise: <em>"Be merciful to those on earth, and the One above the heavens will be merciful to you."</em> <em>(Tirmidhi 1924)</em> When you choose to pause and show mercy instead of yelling back, you are not losing — you are winning the only fight that actually matters: the fight inside your own heart.</p>`
+    },
+    { id: 'restraint-power', zone: 'conflict', title: "When you hold the power", icon: 'scale',
+        truth: "Real strength is having the power to punish someone, but choosing to forgive them instead.",
+        pivot: "How do I want to be remembered by the people I lead?",
+        action: "Use your power to show kindness. When they expect to be punished, surprise them with forgiveness. It builds trust that lasts forever.",
+        story: `<p>It is easy to punish people when you are the boss, the older sibling, or the parent. Anyone can use rules to make people feel small. The rarest and most beautiful kind of power is choosing not to strike when you have every right to.</p><p>Think about Prophet Yusuf (AS). His own brothers threw him into a well when he was a boy. They lied to their father. They sold him into slavery. Years passed, and Yusuf went from being a slave to being one of the most powerful men in all of Egypt.</p><p>Then one day, his brothers walked into his palace, hungry and desperate, not knowing it was him. He had every right to throw them in prison. He had every right to let them starve. Instead, he revealed himself and said:</p><div class="story-quote">"No blame upon you today. May Allah forgive you, and He is the Most Merciful of the merciful."<span class="story-quote-ref">(Surah Yusuf 12:92)</span></div><p>That sentence saved a whole family. By forgiving when you are fully able to punish, you copy one of the most beautiful traits of Allah Himself.</p>`
+    },
+    { id: 'setting-boundaries', zone: 'conflict', title: "They keep crossing the line", icon: 'shield',
+        truth: "Mercy does not mean letting people abuse you. Setting a healthy boundary is a form of mercy for you both.",
+        pivot: "Am I protecting my heart, or am I just enabling their bad behavior?",
+        action: "Step back. You can forgive someone in your heart to find peace, without letting them back into your space to hurt you again.",
+        story: `<p>There is a huge difference between being merciful and being a doormat. Islam commands us to be compassionate, but it absolutely forbids us from allowing ourselves to be oppressed or abused.</p><p>The Prophet Muhammad ﷺ taught a very profound rule about protecting yourself:</p><div class="story-quote">"A believer is not stung twice from the same hole."<span class="story-quote-ref">(Sahih al-Bukhari 6133)</span></div><p>This means if someone hurts you, betrays your trust, or abuses your kindness, you are supposed to learn from it and put up a shield. Letting someone repeatedly mistreat you isn't noble; it actually enables them to keep accumulating bad deeds.</p><p>Sometimes, the most merciful thing you can do is walk away. By stopping them from hurting you again, you are putting an end to their wrongdoing. That boundary is a mercy to their soul as well as your own.</p><p>You can forgive someone so that your own heart is free of bitterness and anger. But <strong>forgiveness does not equal access</strong>. You can completely forgive them for the past, while still enforcing a strict boundary to protect your future.</p>`
+    },
+    { id: 'internal-kingdom', zone: 'inner', title: "I made a mistake", icon: 'user-x',
+        truth: "Expecting yourself to be perfect is unfair. Only Allah is completely perfect.",
+        pivot: "Would I be this mean to my best friend if they made this mistake?",
+        action: "Forgive yourself. Acknowledge what went wrong, ask Allah to forgive you, learn the lesson, and try again without carrying a heavy backpack of shame.",
+        story: `<p>Sometimes we are our own worst bullies. When we make a mistake, we beat ourselves up for days, weeks, even years. But here is something amazing: even the very first human being made a mistake.</p><p>Prophet Adam (AS) was the first person Allah created. He lived in Paradise. And still, he slipped up. But when he did, Allah did not throw him away. Allah taught him exactly what to say:</p><div class="story-quote">"Our Lord, we have wronged ourselves, and if You do not forgive us and have mercy upon us, we will surely be among the losers."<span class="story-quote-ref">(Surah Al-A'raf 7:23)</span></div><p>Notice something? Allah did not just forgive him. Allah <em>taught him the words</em> to come back. That is how much Allah loves the one who returns.</p><p>When you refuse to forgive yourself, you are actually forgetting that Allah is Ar-Rahman — the Most Merciful. You are demanding a perfection only He has. The goal is not to never fall down. The goal is to get back up, say the words, and try to be a little better next time.</p>`
+    },
+    { id: 'i-hurt-someone', zone: 'inner', title: "I hurt someone", icon: 'heart-crack',
+        truth: "When you hurt another person, asking Allah for forgiveness is not enough. You also need to make it right with them.",
+        pivot: "Is my pride stopping me from doing the one thing that would heal this?",
+        action: "Go to them. Say plainly: \"I was wrong. I hurt you. I'm sorry.\" No excuses, no explanations, no \"but you also...\" Just the apology. The sooner the better.",
+        story: `<p>One of the hardest moments in life is realizing you hurt someone you care about. A sharp word to your spouse. Yelling at your child. Cutting off a friend. Embarrassing a sibling in front of others.</p><p>Many people, when they realize this, just quietly ask Allah to forgive them and hope it goes away. But Islam teaches something very important: there are <em>two kinds</em> of wrongs.</p><p>Wrongs against Allah, like missing a prayer, are between you and Him — and Allah is so generous that sincere tawbah (repentance) wipes them clean.</p><p>But wrongs against people? Those are different. They have a special rule.</p><p>The Prophet ﷺ said:</p><div class="story-quote">"Whoever has wronged his brother — in honor or in anything else — let him seek to make it right with him today, before the day comes when there will be no money to pay with, only good deeds and bad deeds."<span class="story-quote-ref">(Sahih al-Bukhari 2449)</span></div><p>Read that again. On the Day of Judgment, if you wronged someone and never made it right, your good deeds will be transferred to them — your prayers, your charity, your fasting — until the debt is paid. And if you run out of good deeds, their bad deeds get loaded onto you.</p><p>That is how seriously Allah takes the dignity of His creation.</p><p>The good news? Fixing it on this side of life is so simple. Go to them. Look them in the eye. Say "I was wrong, please forgive me." That sentence — said honestly — has the power to clear something that no amount of private prayer can.</p><p>The Prophet ﷺ himself, the most beloved of Allah, would seek out the people he had unintentionally inconvenienced and make it right. Not because he had done something terrible. Because he understood that <em>itqan</em> in mercy means leaving no debt unpaid, no heart unmended.</p><p>Pride says: "It wasn't that bad. They'll get over it." Mercy says: "Let me make this right today, while I still can."</p>`
+    },
+    { id: 'future-anxiety', zone: 'inner', title: "Scared of tomorrow", icon: 'hourglass',
+        truth: "Tomorrow is in Allah's hands. Worrying does not change the future; it only ruins today.",
+        pivot: "Why am I wasting today's energy fighting a tomorrow that has not even happened yet?",
+        action: "Bring your mind back to right now. Do your best work today, and trust Allah to handle tomorrow.",
+        story: `<p>Anxiety happens when we try to carry the weight of tomorrow on today's shoulders. We imagine terrible things in the future, and we suffer in our minds before anything actually happens in real life.</p><p>Imagine being Prophet Musa (AS), standing at the edge of the Red Sea. The biggest army in the world is charging at his back. There is nothing in front of him but water. His followers are panicking, shouting, "We are surely caught!"</p><p>If anyone ever had a real reason to be afraid of tomorrow, it was him. But Musa (AS) just said, calmly:</p><div class="story-quote">"No! Indeed, my Lord is with me; He will guide me."<span class="story-quote-ref">(Surah Ash-Shu'ara 26:62)</span></div><p>And the sea split.</p><p>The Prophet ﷺ also taught us a beautiful saying: <em>"Tie your camel and trust in Allah."</em> <em>(Tirmidhi 2517)</em> That means do your part — study for the test, work hard, save your money — but once you have done your best, let go of the worry.</p><p>You are not in charge of the universe, and that is actually a relaxing thought. Do what is required of you today, and leave the results to the Most Merciful.</p>`
+    },
+    { id: 'comparison-envy', zone: 'inner', title: "Feeling left behind", icon: 'eye',
+        truth: "Allah's blessings are endless. Someone else getting a blessing does not mean there is less for you.",
+        pivot: "Am I letting jealousy ruin my happiness for all the good things I already have?",
+        action: "Change your jealousy into a prayer. Ask Allah to give that person even more — and to bless you too. It cleans your heart instantly.",
+        story: `<p>Jealousy tricks us into thinking that life is a pie, and if someone else gets a big slice, there is less pie for us. But Allah's treasures are infinite. Giving to someone else does not shrink His treasury at all.</p><p>Think about Prophet Zakariyya (AS). He was an old man — very old. His wife could not have children. For decades, he watched other families be blessed with kids while he stayed alone. He could have grown bitter. He could have asked, "Why them and not me?"</p><p>Instead, in private, he simply turned to Allah and whispered a quiet prayer asking for a child. <em>(Surah Maryam 19:4)</em></p><p>Allah answered him — and gave him a son named Yahya, who would become a great prophet.</p><p>Allah did not forget Zakariyya. He was just preparing him.</p><p>When we look at other people's lives — especially online — we only see their highlight reels. We miss their hidden struggles. The best trick to defeat jealousy is to pray for the person you are jealous of. It feels hard at first, but it instantly washes the bitterness out of your heart.</p>`
+    },
+    { id: 'unseen-destiny', zone: 'heavy', title: "Something bad happened", icon: 'cloud-lightning',
+        truth: "Sometimes a 'no' from Allah is actually protection. Hardships are often hidden mercies.",
+        pivot: "Can I trust that Allah sees the whole picture, while I only see a tiny piece?",
+        action: "It is okay to cry and feel sad. But trust that Allah is protecting you from something unseen, and will replace what you lost with something better.",
+        story: `<p>Because we are human, we only see what is happening right in front of us. If a door closes or we lose something we love, we think it is a punishment. But Allah's plans are always rooted in mercy.</p><p>Prophet Ya'qub (AS) lost his beloved son Yusuf for many, many years. He cried so much he eventually went blind from grief. People told him to give up. But he never stopped trusting Allah. He simply said:</p><div class="story-quote">"So beautiful patience."<span class="story-quote-ref">(Surah Yusuf 12:18)</span></div><p><em>Sabr jameel.</em> Beautiful patience. Not loud crying or angry questioning — just quiet trust.</p><p>And what happened? Years later, Allah did not just give him Yusuf back. Allah gave him Yusuf as a powerful leader, a stronger family, and a healed heart. The loss was the long road to a bigger blessing.</p><p>Sometimes losing a job protects you from a bad place. Sometimes getting sick forces you to rest. To trust Allah's plan is to believe that He is taking care of you, even when things feel confusing or painful.</p>`
+    },
+    { id: 'society-exhaustion', zone: 'heavy', title: "Tired of the world", icon: 'globe',
+        truth: "A world full of anger will eventually fall apart. Kindness is the only thing that holds us together.",
+        pivot: "Am I adding to the loud noise of the world, or am I creating a quiet, peaceful space?",
+        action: "Turn off the bad news for today. Go do one quiet, secret act of kindness for someone else without telling anyone.",
+        story: `<p>Today, it is very easy to get overwhelmed by the news, the internet, and people arguing constantly. When a society is built on outrage, it becomes a very scary place to live.</p><p>The Prophet ﷺ once told a story about a man walking through a desert who became very thirsty. He found a well, climbed down, and drank his fill. When he came up, he saw a dog panting and licking the dirt out of thirst. The man thought, "This dog is as thirsty as I was." So he climbed back down into the well, filled his shoe with water, held it in his teeth, and gave the dog a drink.</p><p>The Prophet ﷺ said Allah forgave that man's sins because of that one act of mercy to a thirsty animal. <em>(Sahih al-Bukhari 173)</em></p><p>One small kindness. One animal. One forgotten moment in a vast desert. That is how much weight a single act of mercy carries with Allah.</p><p>You cannot fix the whole world by yourself. But you can fix your own tiny corner of it. By being kind quietly, you create a safe, peaceful bubble — and Allah notices every drop.</p>`
+    },
+    { id: 'impatient-waiting', zone: 'heavy', title: "Tired of waiting", icon: 'clock',
+        truth: "A delay is not a 'no'. Sometimes Allah makes us wait so we grow strong enough to handle the blessing.",
+        pivot: "Can I trust the timing of the Master Planner?",
+        action: "Let the worry settle. Focus on being patient and doing good deeds right now while you wait for the doors to open.",
+        story: `<p>We live in a world where we want everything instantly. But Allah's timeline is built on perfect wisdom, not on rushing. When a prayer seems unanswered, it is never because Allah forgot you.</p><p>Look again at Prophet Ya'qub (AS). He waited <em>decades</em> for Yusuf to come back. Decades of tears. Decades of his other sons telling him, "Just forget about him." But he never lost hope in Allah's mercy.</p><p>And look at Prophet Zakariyya (AS) again. Allah made him wait until he was so old that having a child seemed impossible — and <em>then</em> gave him Yahya. Why the wait? Because the blessing meant more after the patience. Because Zakariyya was being trained the whole time.</p><p>Sometimes, if we get what we want too early, we are not ready for it. The waiting period is a training gym for your character. It makes you stronger, more patient, more grateful when the blessing finally arrives.</p><p>Showing mercy to yourself when you are waiting means relaxing. The seed has been planted. It just needs time to grow under the soil before you can see the flower.</p>`
+    },
+    { id: 'loved-one-hurting', zone: 'heavy', title: "Someone I love is hurting", icon: 'users',
+        truth: "You cannot carry someone else's pain for them. But you can sit beside them in it, and pray for them quietly.",
+        pivot: "Am I trying to fix their pain, or am I willing to just be present in it with them?",
+        action: "Don't try to solve it. Sit with them. Listen without giving advice. Then quietly, when you are alone, raise your hands and ask Allah to lighten their load.",
+        story: `<p>Sometimes the hardest pain is not your own. It is watching someone you love suffer — your child, your parent, your spouse, your friend — and feeling powerless to fix it.</p><p>You want to take their pain away. You can't. You want the right words to come. They don't. You feel guilty for being okay when they're not.</p><p>Look at the Prophet Muhammad ﷺ. He carried the pain of his entire ummah on his heart. The Quran describes him this way:</p><div class="story-quote">"There has come to you a Messenger from among yourselves. Your suffering is grievous to him; he is deeply concerned for you; to the believers, he is full of kindness and mercy."<span class="story-quote-ref">(Surah At-Tawbah 9:128)</span></div><p>The word the Quran uses for "concerned" is <em>harees</em> — it means he was so deeply invested in our wellbeing that it caused him pain. He felt our struggles. He carried our weight, even though he didn't have to.</p><p>And when his own beloved son Ibrahim died as a baby, the Prophet ﷺ wept. His companions were surprised — wasn't he the one who taught patience? He said: <em>"The eyes shed tears, the heart grieves, but we say only what pleases our Lord."</em> <em>(Sahih al-Bukhari 1303)</em></p><p>Notice — he did not pretend the pain wasn't there. He did not silence his tears. He just refused to let his grief turn into complaint against Allah.</p><p>That is what you can do for the person you love. Cry with them. Be present. Resist the urge to fix or explain. And in private, raise your hands and ask Allah to do what you cannot. The Prophet ﷺ said dua for an absent person is one of the most quickly answered — because the angels say "Ameen, and the same for you."</p><p>You may not be able to lift their burden. But Allah can. Be the one who carries them in your prayers.</p>`
+    },
+    { id: 'empty', zone: 'heavy', title: "I feel empty", icon: 'cloud',
+        truth: "Numbness is not the absence of faith. Sometimes it is the soul's way of resting before it grows.",
+        pivot: "Can I take one small step toward Allah today, even when I don't feel anything?",
+        action: "Do one small good deed today. Wash for wudu. Read one verse. Whisper one dhikr. Don't wait for the feeling to come back — let the action lead the heart.",
+        story: `<p>There are seasons when you don't feel anything. Not sad, not happy, not angry, not grateful. Just flat. The prayers feel mechanical. The Quran feels distant. You go through the motions but your heart isn't there.</p><p>Many people panic when this happens. They think: "I've lost my faith. Allah doesn't love me anymore." But the scholars of Islam recognized this state and gave it a name: <em>qabd</em> — the contracted heart. And they taught that it happens to <em>everyone</em> on the path, including the most righteous.</p><p>The Prophet ﷺ himself said:</p><div class="story-quote">"Hearts rust just like iron rusts. The polish for them is reciting the Quran and remembering death."<span class="story-quote-ref">(Bayhaqi, Shu'ab al-Iman)</span></div><p>Notice — he did not say "if your heart rusts, something is wrong with you." He said hearts <em>rust</em>. It is part of being a heart.</p><p>And Allah Himself, in the Quran, addressed the believer who feels distant:</p><div class="story-quote">"Has the time not come for those who believe that their hearts should yield to the remembrance of Allah?"<span class="story-quote-ref">(Surah Al-Hadid 57:16)</span></div><p>Even believers, this verse says. Even the people of faith. Allah is gently calling them back when their hearts have grown tired.</p><p>Here is the secret: you do not need to feel something to do something. The companions of the Prophet ﷺ taught us that the path forward when the heart is dry is not waiting for feeling — it is action. One small act of obedience. One whispered word. One verse read aloud, even if it doesn't move you.</p><p>The feeling follows the action, not the other way around. Take the smallest step toward Allah today, and trust that He will take the larger steps toward you. He has promised:</p><div class="story-quote">"And those who strive for Us — We will surely guide them to Our ways."<span class="story-quote-ref">(Surah Al-Ankabut 29:69)</span></div><p>Notice the order. <em>First</em> they strive. <em>Then</em> Allah guides. The dryness is not the end of your journey. It is the soil in which deeper roots are forming.</p>`
+    },
+    { id: 'losing-faith', zone: 'heavy', title: "I'm losing my faith", icon: 'help-circle',
+        truth: "Doubt is not the opposite of faith. It is often the door to a deeper faith. Even the prophets asked questions.",
+        pivot: "Am I running away from Allah, or am I being honest with Him about my struggle?",
+        action: "Tell Allah exactly what you are feeling — even the doubt itself. He already knows. Then make one specific dua: \"Ya Allah, hold my heart steady on Your deen.\"",
+        story: `<p>This is one of the most painful places a person can be. You used to feel close to Allah. Now you feel like a stranger to Him. Maybe something terrible happened that you cannot reconcile. Maybe questions are eating at you. Maybe the world feels too dark for there to be a Merciful God.</p><p>Hear this carefully: <strong>doubt is not disbelief.</strong> Doubt is wrestling. And wrestling means you still care.</p><p>Look at Prophet Ibrahim (AS) — the father of monotheism, called Khalil-ullah, the friend of Allah. Even <em>he</em> asked a question that sounds almost shocking. He said to Allah:</p><div class="story-quote">"My Lord, show me how You give life to the dead."<span class="story-quote-ref">(Surah Al-Baqarah 2:260)</span></div><p>Allah replied: <em>"Do you not believe?"</em></p><p>And Ibrahim said something beautiful and deeply human: <em>"Yes — but only that my heart may be at peace."</em></p><p>He believed. But he wanted his heart to settle. And Allah did not rebuke him. Allah <em>showed him.</em> He gave him exactly what he needed to find peace.</p><p>The Prophet Muhammad ﷺ also taught us that the companions came to him saying they felt thoughts in their hearts so terrible they would rather be burned than speak them aloud. He smiled and said: <em>"That is the clear sign of faith."</em> <em>(Sahih Muslim 132)</em> The very fact that the doubt distresses you means faith is still alive in you. A dead heart would not be troubled by doubt.</p><p>The greatest companion, Sayyiduna Abu Bakr (RA), once heard a rumor and said: "If a Muslim doubts, his Islam is gone." But the Prophet ﷺ corrected him gently. The whisper of doubt — the question that comes uninvited — is not your faith leaving. It is shaytan testing the door.</p><p>Here is what you can do, even now:</p><p>1. Be honest with Allah. Tell Him: "I am struggling. I don't understand. Hold me anyway."</p><p>2. Make this dua, taught by the Prophet ﷺ: <em>"Ya muqallib al-quloob, thabbit qalbi 'ala deenik"</em> — "O Turner of hearts, keep my heart steady on Your faith." <em>(Tirmidhi 2140)</em></p><p>3. Don't run from Allah. Run <em>toward</em> Him with the doubt. Even if you cannot pray with focus, pray. Even if you cannot read with understanding, read. The door is still open.</p><p>The faith you find on the other side of honest struggle is stronger than the faith of someone who never questioned. Many of the great scholars of Islam went through periods of darkness exactly like this. They came back. So can you. Allah has not gone anywhere. He is waiting.</p>`
+    },
+    { id: 'good-times', zone: 'good', title: "Life is good right now", icon: 'sparkles',
+        truth: "Blessings are tests too. The biggest danger when life is easy is forgetting Who gave it to you.",
+        pivot: "Am I thanking the One who gave me this, or am I starting to think I did it myself?",
+        action: "Say Alhamdulillah out loud right now. Then do one small thing to share this blessing — a gift, a kind word, a charity.",
+        story: `<p>We always think the test is the hardship. But Allah tells us in the Quran that the good times are also a test — sometimes a harder one. When life gets easy, our hearts get sleepy. We forget where the blessings came from. We start thinking, "I earned this. I built this. I am the reason."</p><p>Prophet Sulayman (AS) was given a kingdom no one had ever seen. He could speak to animals. The wind worked for him. He had power, wealth, and wisdom. When a great miracle was placed before him, he said something amazing:</p><div class="story-quote">"This is from the favor of my Lord, to test me whether I am grateful or ungrateful."<span class="story-quote-ref">(Surah An-Naml 27:40)</span></div><p>Did you catch that? The most powerful king in history saw his blessings and immediately said: <em>this is a test.</em> He knew that gratitude was the rent he owed for his kingdom.</p><p>And Allah promises us in the Quran:</p><div class="story-quote">"If you are grateful, I will surely increase you."<span class="story-quote-ref">(Surah Ibrahim 14:7)</span></div><p>Shukr (gratitude) is the secret multiplier. When you say Alhamdulillah and mean it — when you give some of what you have to someone who has less — Allah grows the blessing. The Mirror of Mercy is not just for bad days. The hardest mercy is remembering Allah when everything is going right.</p>`
+    }
+];
+
+// ============================================================
+// STATE
+// ============================================================
+function safeGet(key, fallback) { try { return localStorage.getItem(key) ?? fallback; } catch (e) { return fallback; } }
+function safeSet(key, val) { try { localStorage.setItem(key, val); } catch (e) {} }
+function safeParseArray(raw) { try { const p = JSON.parse(raw); return Array.isArray(p) ? p : []; } catch (e) { return []; } }
+function safeSessionGet(key) { try { return sessionStorage.getItem(key); } catch (e) { return null; } }
+function safeSessionSet(key, val) { try { sessionStorage.setItem(key, val); } catch (e) {} }
+
+const state = {
+    visits: parseInt(safeGet('mom_visits', '0')) || 0,
+    encountered: safeParseArray(safeGet('mom_encountered', '[]')),
+    shared: parseInt(safeGet('mom_shared', '0')) || 0,
+    a2hsShown: safeGet('mom_a2hs_shown', '0') === '1'
+};
+function saveState() {
+    safeSet('mom_visits', state.visits.toString());
+    safeSet('mom_encountered', JSON.stringify(state.encountered));
+    safeSet('mom_shared', state.shared.toString());
+    safeSet('mom_a2hs_shown', state.a2hsShown ? '1' : '0');
+}
+
+let currentZone = null;
+let currentScenarioId = null;
+let cameFromZone = false;
+
+function safeIcons() { if (typeof lucide !== 'undefined' && lucide.createIcons) lucide.createIcons(); }
+function tap() { if (navigator.vibrate) navigator.vibrate(8); }
+
+function toast(msg) {
+    const t = document.getElementById('toast');
+    t.textContent = msg;
+    t.classList.add('visible');
+    setTimeout(() => t.classList.remove('visible'), 2200);
+}
+
+// ============================================================
+// VIEWS
+// ============================================================
+function setView(id) {
+    document.querySelectorAll('.view').forEach(v => v.classList.remove('active'));
+    const newView = document.getElementById(id);
+    newView.classList.add('active');
+    if (id === 'view-home') document.body.classList.add('on-home');
+    else document.body.classList.remove('on-home');
+    window.scrollTo({ top: 0, behavior: 'instant' });
+    const heading = newView.querySelector('h1, h2');
+    if (heading) setTimeout(() => heading.focus({ preventScroll: true }), 50);
+}
+
+function goHome() {
+    tap();
+    currentZone = null;
+    currentScenarioId = null;
+    cameFromZone = false;
+    safeReplaceState(window.location.pathname + window.location.search);
+    setView('view-home');
+}
+
+function showZone(zoneId) {
+    tap();
+    const zone = zones.find(z => z.id === zoneId);
+    if (!zone) return;
+    currentZone = zoneId;
+    document.getElementById('zone-title').textContent = zone.title;
+    document.getElementById('zone-sub').textContent = zone.long;
+    const list = document.getElementById('scenario-list');
+    list.innerHTML = '';
+    scenarios.filter(s => s.zone === zoneId).forEach(s => {
+        const row = document.createElement('div');
+        row.className = 'scenario-row';
+        row.innerHTML = `
+            <button class="scenario-row-main" onclick="openScenario('${s.id}', true)">
+                <div class="scenario-row-icon"><i data-lucide="${s.icon}" width="18" height="18"></i></div>
+                <div class="scenario-row-title">${s.title}</div>
+            </button>
+            <button class="scenario-row-share" onclick="event.stopPropagation(); quickShare('${s.id}');" aria-label="Share ${s.title}">
+                <i data-lucide="share-2" width="18" height="18"></i>
+            </button>
+        `;
+        list.appendChild(row);
+    });
+    safeIcons();
+    setView('view-zone');
+}
+
+function openScenario(id, fromZone, fromHash) {
+    tap();
+    const s = scenarios.find(x => x.id === id);
+    if (!s) return;
+    currentScenarioId = id;
+    cameFromZone = !!fromZone;
+    safeReplaceState('#' + id);
+    if (!state.encountered.includes(id)) {
+        state.encountered.push(id);
+        saveState();
+    }
+    const zone = zones.find(z => z.id === s.zone);
+    document.getElementById('detail-eyebrow').innerHTML = `<i data-lucide="${zone.icon}" width="13" height="13"></i> ${zone.title}`;
+    document.getElementById('detail-title').textContent = s.title;
+    document.getElementById('detail-action').textContent = s.action;
+    document.getElementById('detail-pivot').textContent = s.pivot;
+    document.getElementById('detail-truth').textContent = s.truth;
+    document.getElementById('detail-story').innerHTML = s.story;
+    const habit = zoneToHabit[s.zone];
+    if (habit) {
+        const iconEl = document.getElementById('related-practice-icon');
+        iconEl.innerHTML = `<i data-lucide="${habit.icon}" width="18" height="18"></i>`;
+        iconEl.classList.remove('h1', 'h2', 'h3');
+        iconEl.classList.add(habit.cls);
+        document.getElementById('related-practice-title').textContent = habit.title;
+    }
+    populateNextMercy(s);
+    safeIcons();
+    if (fromHash) {
+        document.querySelectorAll('.view').forEach(v => v.classList.remove('active'));
+        const detailView = document.getElementById('view-detail');
+        detailView.classList.add('active');
+        document.body.classList.remove('on-home');
+        window.scrollTo({ top: 0, behavior: 'instant' });
+        const heading = detailView.querySelector('h1, h2');
+        if (heading) setTimeout(() => heading.focus({ preventScroll: true }), 50);
+    } else {
+        setView('view-detail');
+    }
+}
+
+function backFromDetail() {
+    safeReplaceState(window.location.pathname + window.location.search);
+    if (cameFromZone && currentZone) showZone(currentZone);
+    else goHome();
+}
+
+let nextMercyId = null;
+function populateNextMercy(currentScenario) {
+    const seen = new Set(state.encountered);
+    seen.add(currentScenario.id);
+    const unseenOtherZone = scenarios.filter(s => !seen.has(s.id) && s.zone !== currentScenario.zone);
+    const unseenAny = scenarios.filter(s => !seen.has(s.id));
+    const pool = unseenOtherZone.length > 0 ? unseenOtherZone : unseenAny;
+    const card = document.getElementById('next-mercy');
+    if (pool.length === 0) { card.style.display = 'none'; nextMercyId = null; return; }
+    const idx = currentScenario.id.length % pool.length;
+    const next = pool[idx];
+    nextMercyId = next.id;
+    document.getElementById('next-mercy-title').textContent = next.title;
+    card.style.display = 'flex';
+}
+
+function openNextMercy() {
+    if (!nextMercyId) return;
+    const next = scenarios.find(s => s.id === nextMercyId);
+    if (!next) return;
+    cameFromZone = false;
+    currentZone = next.zone;
+    openScenario(next.id, false, false);
+}
+
+function showHabits() { tap(); setView('view-habits'); }
+function showAbout() {
+    tap();
+    const m = document.getElementById('about-mirror');
+    if (state.encountered.length > 0 || state.shared > 0) {
+        document.getElementById('mirror-encountered').textContent = state.encountered.length;
+        document.getElementById('mirror-shared').textContent = state.shared;
+        m.classList.add('visible');
+        if (state.shared > 0) document.getElementById('mirror-dua').style.display = 'block';
+    }
+    setView('view-about');
+}
+
+// ============================================================
+// SHARING
+// ============================================================
+async function shareScenario() {
+    tap();
+    const s = scenarios.find(x => x.id === currentScenarioId);
+    if (!s) return;
+    const success = await doShare(s);
+    if (success) {
+        const btn = document.getElementById('detail-share-btn');
+        if (btn) {
+            const original = btn.innerHTML;
+            btn.innerHTML = `<i data-lucide="check" width="18" height="18"></i> Shared`;
+            safeIcons();
+            setTimeout(() => { btn.innerHTML = original; safeIcons(); }, 2200);
+        }
+    }
+}
+
+async function quickShare(id) {
+    tap();
+    const s = scenarios.find(x => x.id === id);
+    if (!s) return;
+    await doShare(s);
+    safeReplaceState(window.location.pathname + window.location.search);
+}
+
+async function doShare(s) {
+    safeReplaceState('#' + s.id);
+    const data = { title: 'The Mirror of Mercy', text: `A small reflection on ${s.title} — when you have a moment.`, url: window.location.href };
+    let success = false;
+    try {
+        if (navigator.share) { await navigator.share(data); success = true; }
+        else { await navigator.clipboard.writeText(window.location.href); toast('Link copied to clipboard'); success = true; }
+    } catch (err) { success = false; }
+    if (success) { state.shared++; saveState(); }
+    return success;
+}
+
+// ============================================================
+// MENU SHEET
+// ============================================================
+function openMenu() { tap(); document.getElementById('menu-sheet-wrap').classList.add('visible'); document.body.style.overflow = 'hidden'; }
+function closeMenu() { document.getElementById('menu-sheet-wrap').classList.remove('visible'); document.body.style.overflow = ''; }
+function closeMenuSheet(e) { if (e.target.id === 'menu-sheet-wrap') closeMenu(); }
+
+// ============================================================
+// A2HS
+// ============================================================
+function showA2HS() {
+    tap();
+    const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
+    const isAndroid = /Android/.test(navigator.userAgent);
+    const isStandalone = window.matchMedia('(display-mode: standalone)').matches || navigator.standalone;
+    document.getElementById('a2hs-ios').style.display = 'none';
+    document.getElementById('a2hs-android').style.display = 'none';
+    document.getElementById('a2hs-desktop').style.display = 'none';
+    if (isStandalone) { toast('Mercy is already on your home screen 🤍'); return; }
+    if (isIOS) document.getElementById('a2hs-ios').style.display = 'block';
+    else if (isAndroid) document.getElementById('a2hs-android').style.display = 'block';
+    else document.getElementById('a2hs-desktop').style.display = 'block';
+    document.getElementById('a2hs-wrap').classList.add('visible');
+    document.body.style.overflow = 'hidden';
+    state.a2hsShown = true;
+    saveState();
+}
+function closeA2HS(e) { if (e.target.id === 'a2hs-wrap') closeA2HSDirect(); }
+function closeA2HSDirect() {
+    tap();
+    document.getElementById('a2hs-wrap').classList.remove('visible');
+    document.body.style.overflow = '';
+}
+
+// ============================================================
+// BREATHING
+// ============================================================
+let breathContext = 'splash';
+let breathLoopActive = false;
+let breathCycleCount = 0;
+let breathInfinite = false;
+let bt1, bt2, bt3;
+
+function openBreath(context) {
+    tap();
+    breathContext = context;
+    breathCycleCount = 0;
+    breathInfinite = false;
+    const splashControls = document.getElementById('breath-controls-splash');
+    const finishControls = document.getElementById('breath-controls-finish');
+    splashControls.style.display = 'none';
+    splashControls.style.opacity = '0';
+    splashControls.style.transition = 'opacity 0.6s ease';
+    finishControls.style.display = 'none';
+    if (context === 'splash') {
+        setTimeout(() => {
+            if (breathLoopActive && breathContext === 'splash') {
+                splashControls.style.display = 'flex';
+                requestAnimationFrame(() => { splashControls.style.opacity = '1'; });
+            }
+        }, 4000);
+    }
+    const overlay = document.getElementById('breath-overlay');
+    overlay.style.display = 'flex';
+    requestAnimationFrame(() => overlay.classList.add('visible'));
+    breathLoopActive = true;
+    runBreathCycle();
+}
+
+function closeBreath() {
+    tap();
+    breathLoopActive = false;
+    clearTimeout(bt1); clearTimeout(bt2); clearTimeout(bt3);
+    document.getElementById('breath-circle').classList.remove('animating');
+    const overlay = document.getElementById('breath-overlay');
+    overlay.classList.remove('visible');
+    safeSessionSet('mom_breath_seen', '1');
+    setTimeout(() => overlay.style.display = 'none', 400);
+}
+
+function continueBreathing() {
+    tap();
+    breathInfinite = true;
+    document.getElementById('breath-controls-finish').style.display = 'none';
+    runBreathCycle();
+}
+
+function showBreathFinish() {
+    document.getElementById('breath-circle').classList.remove('animating');
+    document.getElementById('breath-label').style.opacity = '0';
+    const finish = document.getElementById('breath-controls-finish');
+    finish.style.display = 'flex';
+}
+
+function runBreathCycle() {
+    if (!breathLoopActive) return;
+    if (breathContext === 'detail' && breathCycleCount >= 3 && !breathInfinite) { showBreathFinish(); return; }
+    breathCycleCount++;
+    const label = document.getElementById('breath-label');
+    const circle = document.getElementById('breath-circle');
+    if (!circle.classList.contains('animating')) circle.classList.add('animating');
+    const setLabel = (txt) => {
+        if (!breathLoopActive) return;
+        label.style.opacity = '0';
+        setTimeout(() => {
+            if (!breathLoopActive) return;
+            label.textContent = txt;
+            label.style.opacity = '1';
+        }, 280);
+    };
+    setLabel('Breathe in');
+    bt1 = setTimeout(() => setLabel('Hold'), 4000);
+    bt2 = setTimeout(() => setLabel('Breathe out'), 6000);
+    bt3 = setTimeout(() => { if (breathLoopActive) runBreathCycle(); }, 10000);
+}
+
+// ============================================================
+// INIT
+// ============================================================
+document.addEventListener('DOMContentLoaded', () => {
+    const frame = document.querySelector('.frame');
+    let parent = frame ? frame.parentElement : null;
+    while (parent && parent !== document.body) {
+        parent.classList.add('mercy-fullbleed');
+        parent = parent.parentElement;
+    }
+    document.body.classList.add('on-home');
+
+    const zoneList = document.getElementById('zone-list');
+    zones.forEach(z => {
+        const btn = document.createElement('button');
+        btn.className = 'zone';
+        btn.innerHTML = `
+            <div class="zone-icon ${z.id}"><i data-lucide="${z.icon}" width="20" height="20"></i></div>
+            <div class="zone-body">
+                <div class="zone-title">${z.title}</div>
+                <div class="zone-sub">${z.sub}</div>
+            </div>
+            <div class="zone-chev"><i data-lucide="chevron-right" width="20" height="20"></i></div>
+        `;
+        btn.onclick = () => showZone(z.id);
+        zoneList.appendChild(btn);
+    });
+    safeIcons();
+
+    if (!safeSessionGet('mom_session')) {
+        state.visits++;
+        safeSessionSet('mom_session', '1');
+        saveState();
+    }
+
+    const hash = window.location.hash.replace('#', '');
+    const directScenario = hash ? scenarios.find(s => s.id === hash) : null;
+    if (directScenario) {
+        safeSessionSet('mom_breath_seen', '1');
+        cameFromZone = false;
+        currentZone = directScenario.zone;
+        openScenario(directScenario.id, false, true);
+    } else if (!safeSessionGet('mom_breath_seen')) {
+        openBreath('splash');
+    }
+
+    const isStandalone = window.matchMedia('(display-mode: standalone)').matches || navigator.standalone;
+    if (state.visits >= 3 && !state.a2hsShown && !isStandalone && !directScenario) {
+        setTimeout(() => showA2HS(), 1200);
+    }
+
+    document.addEventListener('keydown', (e) => {
+        if (e.key !== 'Escape') return;
+        const breath = document.getElementById('breath-overlay');
+        const a2hs = document.getElementById('a2hs-wrap');
+        const menu = document.getElementById('menu-sheet-wrap');
+        if (breath.classList.contains('visible')) { closeBreath(); return; }
+        if (a2hs.classList.contains('visible')) { closeA2HSDirect(); return; }
+        if (menu.classList.contains('visible')) { closeMenu(); return; }
+    });
+});
+
+</script>
+</body>
+</html>
