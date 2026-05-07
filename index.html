@@ -1171,6 +1171,130 @@
         }
 
         /* ===========================================================
+           INSTALL BANNER — bottom-anchored, only shows when
+           Chrome has fired beforeinstallprompt and we have a usable
+           native install prompt. Dismissible. Never nags twice.
+           =========================================================== */
+        .install-banner {
+            position: fixed;
+            left: 0; right: 0;
+            bottom: 0;
+            z-index: 60;
+            background: white;
+            border-top: 1px solid var(--ink-100);
+            box-shadow: 0 -8px 24px rgba(28, 25, 20, 0.08);
+            padding: 1rem 1rem;
+            padding-bottom: calc(1rem + env(safe-area-inset-bottom));
+            padding-left: max(1rem, env(safe-area-inset-left));
+            padding-right: max(1rem, env(safe-area-inset-right));
+            display: none;
+            align-items: center;
+            gap: 0.85rem;
+            transform: translateY(100%);
+            transition: transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
+        }
+        .install-banner.visible {
+            display: flex;
+            transform: translateY(0);
+        }
+        @media (min-width: 768px) {
+            .install-banner {
+                left: 50%;
+                right: auto;
+                bottom: 1rem;
+                transform: translateX(-50%) translateY(150%);
+                max-width: 28rem;
+                width: calc(100% - 2rem);
+                border-radius: 1rem;
+                border: 1px solid var(--ink-100);
+            }
+            .install-banner.visible {
+                transform: translateX(-50%) translateY(0);
+            }
+        }
+        .install-banner-icon {
+            width: 40px; height: 40px;
+            background: var(--teal-50);
+            color: var(--teal-700);
+            border-radius: 0.6rem;
+            display: flex; align-items: center; justify-content: center;
+            flex-shrink: 0;
+        }
+        .install-banner-text {
+            flex: 1;
+            min-width: 0;
+        }
+        .install-banner-title {
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: var(--ink-700);
+            line-height: 1.25;
+            margin-bottom: 0.1rem;
+        }
+        .install-banner-sub {
+            font-size: 0.8rem;
+            color: var(--ink-400);
+            line-height: 1.3;
+        }
+        .install-banner-cta {
+            background: var(--teal-600);
+            color: white;
+            font-weight: 600;
+            font-size: 0.9rem;
+            padding: 0.6rem 0.95rem;
+            border-radius: 0.5rem;
+            white-space: nowrap;
+            flex-shrink: 0;
+            transition: background 0.15s, transform 0.1s;
+        }
+        .install-banner-cta:active {
+            background: var(--teal-700);
+            transform: scale(0.97);
+        }
+        .install-banner-dismiss {
+            width: 32px; height: 32px;
+            color: var(--ink-300);
+            display: flex; align-items: center; justify-content: center;
+            border-radius: 50%;
+            flex-shrink: 0;
+            margin-left: -0.25rem;
+        }
+        .install-banner-dismiss:active { background: var(--ink-100); color: var(--ink-500); }
+
+        /* Home-screen install button — only shown when install is possible.
+           Sits above the quiet links, slightly more visible accent. */
+        .home-install-btn {
+            display: none;
+            align-items: center;
+            gap: 0.85rem;
+            padding: 0.95rem 1rem;
+            color: var(--teal-700);
+            font-size: 0.98rem;
+            font-weight: 600;
+            text-align: left;
+            width: 100%;
+            background: var(--teal-50);
+            border: 1px solid var(--teal-100);
+            border-radius: 0.85rem;
+            margin-bottom: 1rem;
+            transition: background 0.15s, transform 0.1s;
+        }
+        .home-install-btn.visible { display: flex; }
+        .home-install-btn:active {
+            background: var(--teal-100);
+            transform: scale(0.99);
+        }
+        .home-install-btn-icon {
+            color: var(--teal-700);
+            display: flex;
+        }
+        .home-install-btn-arrow {
+            margin-left: auto;
+            color: var(--teal-600);
+            display: flex;
+        }
+
+        /* ===========================================================
            TOAST
            =========================================================== */
         .toast {
@@ -1270,6 +1394,12 @@
         <div class="zone-list" id="zone-list">
             <!-- injected by JS -->
         </div>
+
+        <button id="home-install-btn" class="home-install-btn" onclick="triggerInstall('home')">
+            <span class="home-install-btn-icon"><i data-lucide="download" width="20" height="20"></i></span>
+            <span>Install on your phone</span>
+            <span class="home-install-btn-arrow"><i data-lucide="chevron-right" width="18" height="18"></i></span>
+        </button>
 
         <div class="home-links">
             <button class="home-link" onclick="showHabits()">
@@ -1524,6 +1654,19 @@
             <button class="a2hs-dismiss" onclick="closeA2HSDirect()">Got it</button>
         </div>
     </div>
+</div>
+
+<!-- Install banner — only shows when Chrome has fired beforeinstallprompt -->
+<div id="install-banner" class="install-banner" role="region" aria-label="Install Mercy">
+    <div class="install-banner-icon"><i data-lucide="heart" width="20" height="20"></i></div>
+    <div class="install-banner-text">
+        <div class="install-banner-title">Keep Mercy close</div>
+        <div class="install-banner-sub">Install for one-tap access</div>
+    </div>
+    <button class="install-banner-cta" onclick="triggerInstall('banner')">Install</button>
+    <button class="install-banner-dismiss" onclick="dismissInstallBanner()" aria-label="Dismiss">
+        <i data-lucide="x" width="18" height="18"></i>
+    </button>
 </div>
 
 <!-- Toast -->
@@ -1968,6 +2111,97 @@ function runBreathCycle() {
 }
 
 // ============================================================
+// NATIVE INSTALL PROMPT (Chrome / Android WebAPK)
+// ------------------------------------------------------------
+// Chrome fires 'beforeinstallprompt' when the manifest is valid
+// and the user is eligible to install. We capture it, show our
+// own UI (home button + bottom banner), then call .prompt() on
+// the saved event when the user taps Install. iOS Safari does
+// NOT fire this event — for iOS users, we keep the existing
+// showA2HS() modal as the fallback (triggered from the menu).
+// ============================================================
+let deferredInstallPrompt = null;
+const INSTALL_BANNER_DISMISSED_KEY = 'mom_install_banner_dismissed';
+
+function isStandalonePWA() {
+    return window.matchMedia('(display-mode: standalone)').matches || navigator.standalone === true;
+}
+
+function showHomeInstallBtn() {
+    const btn = document.getElementById('home-install-btn');
+    if (btn) btn.classList.add('visible');
+}
+function hideHomeInstallBtn() {
+    const btn = document.getElementById('home-install-btn');
+    if (btn) btn.classList.remove('visible');
+}
+
+function showInstallBanner() {
+    if (safeGet(INSTALL_BANNER_DISMISSED_KEY, '0') === '1') return;
+    if (isStandalonePWA()) return;
+    const banner = document.getElementById('install-banner');
+    if (!banner) return;
+    // Small delay so it doesn't appear during initial page load animation
+    setTimeout(() => {
+        banner.classList.add('visible');
+        safeIcons();
+    }, 800);
+}
+
+function hideInstallBanner() {
+    const banner = document.getElementById('install-banner');
+    if (banner) banner.classList.remove('visible');
+}
+
+function dismissInstallBanner() {
+    tap();
+    hideInstallBanner();
+    safeSet(INSTALL_BANNER_DISMISSED_KEY, '1');
+}
+
+async function triggerInstall(source) {
+    tap();
+    if (deferredInstallPrompt) {
+        // Native Chrome install path — opens the system install dialog
+        hideInstallBanner();
+        try {
+            deferredInstallPrompt.prompt();
+            const choice = await deferredInstallPrompt.userChoice;
+            if (choice.outcome === 'accepted') {
+                hideHomeInstallBtn();
+                state.a2hsShown = true;
+                saveState();
+            }
+        } catch (e) { /* user dismissed, or browser threw */ }
+        deferredInstallPrompt = null;
+    } else {
+        // No native prompt available (iOS Safari, or Chrome already prompted) —
+        // fall back to the existing manual instructions modal
+        showA2HS();
+    }
+}
+
+window.addEventListener('beforeinstallprompt', (e) => {
+    // Stop Chrome from showing its own mini-infobar
+    e.preventDefault();
+    deferredInstallPrompt = e;
+    // Always show the home button when install is available
+    if (!isStandalonePWA()) {
+        showHomeInstallBtn();
+        // Show the banner once per user, unless dismissed
+        showInstallBanner();
+    }
+});
+
+window.addEventListener('appinstalled', () => {
+    deferredInstallPrompt = null;
+    hideInstallBanner();
+    hideHomeInstallBtn();
+    state.a2hsShown = true;
+    saveState();
+});
+
+// ============================================================
 // INIT
 // ============================================================
 document.addEventListener('DOMContentLoaded', () => {
@@ -2013,8 +2247,11 @@ document.addEventListener('DOMContentLoaded', () => {
         openBreath('splash');
     }
 
-    const isStandalone = window.matchMedia('(display-mode: standalone)').matches || navigator.standalone;
-    if (state.visits >= 3 && !state.a2hsShown && !isStandalone && !directScenario) {
+    // Auto-popup the manual instructions modal ONLY on iOS Safari, after a few visits.
+    // On Chrome/Android, the new install banner (driven by beforeinstallprompt) handles this.
+    const isStandalone = isStandalonePWA();
+    const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
+    if (isIOS && state.visits >= 3 && !state.a2hsShown && !isStandalone && !directScenario) {
         setTimeout(() => showA2HS(), 1200);
     }
 
